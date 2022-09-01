@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+        body {
+          background: #000000;
+          color: white;
+          font-size: 18px;
+          height: 100vh;
+          width: 100vw;
+        }
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+        $(document).ready(function() {
+
+          let shib = 0;
+          let avax = 0;
+          const holdings = {
+            shib: 11008523,
+            avax: 8.13132434,
+          };
+
+          $.ajax({
+            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
+            success: function(data) {
+              shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
+              $('#shib').html(Math.floor(shib));
+              avax = data.find(x => x.symbol === "AVAXUSDT").price * holdings.avax;
+              $('#avax').html(Math.floor(avax));
+            }
+          });
+
+          $("#input").change(function(event) {
+            $('#total').html(Math.floor((avax + shib) * event.target.value));
+          });
+
+        });
+      </script>
+   </head>
+   <body>
+      <div style="background: #000000; height: 100%;">
+        <div style="width: 100%; height: 100%; display: flex; justify-content: center;">
+          <div style="width: 70%;margin:auto">
+            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
+              <div style="font-weight: 700;font-size: 48px;"> Avalanche : </div>
+              <div style="font-weight: 500;font-size: 48px;" id="avax"> 0 </div>
+            </div>
+            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
+              <div style="font-weight: 700;font-size: 48px;"> Shibu : </div>
+              <div style="font-weight: 500;font-size: 48px;" id="shib"> 0 </div>
+            </div>
+            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
+              <input id="input" type="number" placeholder="USDT Price" style="font-size:40px" />
+            </div>
+            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
+              <div style="font-weight: 700;font-size: 48px;"> Total (INR) : </div>
+              <div style="font-weight: 500;font-size: 48px;" id="total"> 0 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   </body>
+</html>
