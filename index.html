@@ -33,7 +33,7 @@
           });
 
          $.ajax({
-            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
+            url: "https://free.currencyconverterapi.com/api/v5/convert?q=USD_INR",
             method: 'POST',
             success: function(USDtoINRResults) {
               INR = USDtoINRResults.data.results.USD_INR.val;
