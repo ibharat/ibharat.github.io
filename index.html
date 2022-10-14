@@ -16,6 +16,7 @@
 
           let shib = 0;
           let avax = 0;
+          let INR = 0; 
           const holdings = {
             shib: 37538210.63,
             avax: 10.00292248,
@@ -28,6 +29,15 @@
               $('#shib').html(Math.floor(shib));
               avax = data.find(x => x.symbol === "AVAXUSDT").price * holdings.avax;
               $('#avax').html(Math.floor(avax));
+            }
+          });
+
+         $.ajax({
+            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
+            method: 'POST',
+            success: function(USDtoINRResults) {
+              INR = USDtoINRResults.data.results.USD_INR.val;
+              $('#input').html((avax + shib) * INR);
             }
           });
 
@@ -51,7 +61,7 @@
               <div style="font-weight: 500;font-size: 48px;" id="shib"> 0 </div>
             </div>
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <input id="input" type="number" placeholder="USDT Price" style="font-size:40px" />
+              <input disabled id="input" type="number" placeholder="USDT Price" style="font-size:40px" />
             </div>
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
               <div style="font-weight: 700;font-size: 48px;"> Total (INR) : </div>
