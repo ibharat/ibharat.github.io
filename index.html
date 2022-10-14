@@ -33,11 +33,10 @@
           });
 
          $.ajax({
-            url: "https://free.currencyconverterapi.com/api/v5/convert?q=USD_INR",
-            method: 'POST',
+            url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
             success: function(USDtoINRResults) {
-              INR = USDtoINRResults.data.results.USD_INR.val;
-              $('#total').html((avax + shib) + '$');
+              INR = USDtoINRResults.tether.inr;
+              $('#total').html((avax + shib) * INR);
             }
           });
         });
