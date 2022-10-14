@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <title>Bharath Reddy Crypto Portfolio </title>
+      <meta property="og:title" content="Bharath Reddy">
+      <meta property="og:image" content="https://www.worldlandtrust.org/wp-content/uploads/2018/04/globe-icon.png">
+      <meta property="og:site_name" content="https://ibharat.github.io/">
+      <meta property="og:description" content="My Cyrpto Portfolio">
+      <meta property="og:type" content="website">
       <style>
         body {
           background: #000000;
@@ -26,9 +32,9 @@
             url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
             success: function(data) {
               shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
-              $('#shib').html(Math.floor(shib));
+              $('#shib').html(shib);
               avax = data.find(x => x.symbol === "AVAXUSDT").price * holdings.avax;
-              $('#avax').html(Math.floor(avax));
+              $('#avax').html(avax);
             }
           });
 
@@ -36,7 +42,7 @@
             url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
             success: function(USDtoINRResults) {
               INR = USDtoINRResults.tether.inr;
-              $('#total').html((avax + shib) * INR);
+              $('#total').html(Math.floor((avax + shib) * INR));
             }
           });
         });
