@@ -37,7 +37,7 @@
             method: 'POST',
             success: function(USDtoINRResults) {
               INR = USDtoINRResults.data.results.USD_INR.val;
-              $('#total').html((avax + shib) * INR);
+              $('#total').html((avax + shib) + '$');
             }
           });
         });
@@ -56,7 +56,7 @@
               <div style="font-weight: 500;font-size: 48px;" id="shib"> 0 </div>
             </div>
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <div style="font-weight: 700;font-size: 48px;"> Total (INR) : </div>
+              <div style="font-weight: 700;font-size: 48px;"> Total : </div>
               <div style="font-weight: 500;font-size: 48px;" id="total"> 0 </div>
             </div>
           </div>
