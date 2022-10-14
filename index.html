@@ -37,14 +37,9 @@
             method: 'POST',
             success: function(USDtoINRResults) {
               INR = USDtoINRResults.data.results.USD_INR.val;
-              $('#input').html((avax + shib) * INR);
+              $('#total').html((avax + shib) * INR);
             }
           });
-
-          $("#input").change(function(event) {
-            $('#total').html(Math.floor((avax + shib) * event.target.value));
-          });
-
         });
       </script>
    </head>
@@ -59,9 +54,6 @@
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
               <div style="font-weight: 700;font-size: 48px;"> Shibu : </div>
               <div style="font-weight: 500;font-size: 48px;" id="shib"> 0 </div>
-            </div>
-            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <input disabled id="input" type="number" placeholder="USDT Price" style="font-size:40px" />
             </div>
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
               <div style="font-weight: 700;font-size: 48px;"> Total (INR) : </div>
