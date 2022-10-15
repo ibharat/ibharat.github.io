@@ -9,11 +9,14 @@
       <meta property="og:type" content="website">
       <style>
         body {
-          background: #000000;
+          background-image: url(https://media4.giphy.com/media/3o6vXTpomeZEyxufGU/giphy.gif);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
           color: white;
-          font-size: 18px;
           height: 100vh;
           width: 100vw;
+          margin: 0;
+          background-color: #000000;
         }
       </style>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -32,37 +35,27 @@
             url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
             success: function(data) {
               shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
-              $('#shib').html(shib);
               avax = data.find(x => x.symbol === "AVAXUSDT").price * holdings.avax;
-              $('#avax').html(avax);
-            }
-          });
-
-         $.ajax({
-            url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
-            success: function(USDtoINRResults) {
-              INR = USDtoINRResults.tether.inr;
-              $('#total').html(Math.floor((avax + shib) * INR));
+              $.ajax({
+                url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
+                success: function(USDtoINRResults) {
+                  INR = USDtoINRResults.tether.inr;
+                  const all = avax + shib;
+                  const val = Math.floor(all * INR);
+                  $('#total').html(val);
+                }
+              });
             }
           });
         });
       </script>
    </head>
    <body>
-      <div style="background: #000000; height: 100%;">
+      <div style="height: 100%;">
         <div style="width: 100%; height: 100%; display: flex; justify-content: center;">
-          <div style="width: 70%;margin:auto">
+          <div style="width: 90%;margin:auto">
             <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <div style="font-weight: 700;font-size: 48px;"> Avalanche : </div>
-              <div style="font-weight: 500;font-size: 48px;" id="avax"> 0 </div>
-            </div>
-            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <div style="font-weight: 700;font-size: 48px;"> Shibu : </div>
-              <div style="font-weight: 500;font-size: 48px;" id="shib"> 0 </div>
-            </div>
-            <div style="display: flex; align-items: center;justify-content: center;margin: 12px 0">
-              <div style="font-weight: 700;font-size: 48px;"> Total : </div>
-              <div style="font-weight: 500;font-size: 48px;" id="total"> 0 </div>
+              <span style="font-weight: 500;font-size: 15rem;word-break: break-all;" id="total"> 0 </span>
             </div>
           </div>
         </div>
