@@ -17,7 +17,7 @@
           font-family: 'Monoton', cursive;
         }
         body {
-          background-image: url(https://media2.giphy.com/media/ygizJv7z4cvcBnF47d/giphy.gif);
+          background-image: url(https://media.tenor.com/9e3oncH1zzoAAAAd/the-batman-fight.gif);
           background-repeat: no-repeat;
           background-size: 80% 40%;
           color: white;
@@ -34,6 +34,13 @@
           font-size: 4rem;
         }
 
+         @media (min-width:320px) {
+            body {
+              background-size: cover;
+              backgrounf-image: url(https://media.tenor.com/mFmmxJNuSxYAAAAd/batman.gif);
+            }
+         }
+
         @media (min-width:801px) {
            body {
               background-size: 45% 45%;
@@ -49,8 +56,8 @@
           let avax = 0;
           let INR = 0; 
           const holdings = {
-            shib: 37538210.63,
-            avax: 10.00292248,
+            shib: 2247252.74,
+            avax: 0,
           };
 
           $.ajax({
@@ -81,7 +88,7 @@
           </div>
         </div>
         <div style="height: 30%;">
-          <div style="height:100%;display: none; align-items: end;justify-content: end;margin: 12px 0">
+          <div style="height:100%; align-items: end;justify-content: end;margin: 12px 0">
             <span style="font-weight: 500;font-size: 2rem;word-break: break-all;padding: 2rem;" id="total"> 0 </span>
           </div>
         </div>
