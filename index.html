@@ -40,23 +40,23 @@
         $(document).ready(function() {
           // $('body').height(window.screen.height);
           let shib = 0;
-          let avax = 0;
+          let lunc = 0;
           let INR = 0; 
           const holdings = {
             shib: 32684724,
-            avax: 0,
+            lunc: 0,
           };
 
           $.ajax({
-            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22AVAXUSDT%22,%22SHIBUSDT%22%5D",
+            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22LUNCUSDT%22,%22SHIBUSDT%22%5D",
             success: function(data) {
               shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
-              avax = data.find(x => x.symbol === "AVAXUSDT").price * holdings.avax;
+              lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
               $.ajax({
                 url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
                 success: function(USDtoINRResults) {
                   INR = USDtoINRResults.tether.inr;
-                  const all = avax + shib;
+                  const all = avax + lunc;
                   const val = Math.floor(all * INR);
                   $('#total').html(val);
                 }
