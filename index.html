@@ -56,7 +56,7 @@
                 url: "https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=inr",
                 success: function(USDtoINRResults) {
                   INR = USDtoINRResults.tether.inr;
-                  const all = avax + lunc;
+                  const all = shib + lunc;
                   const val = Math.floor(all * INR);
                   $('#total').html(val);
                 }
