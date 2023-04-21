@@ -64,7 +64,7 @@
               lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
                const all = shib + lunc;
                const val = Math.floor(all);
-               $('#total').html(val);
+               $('#total').html(`$${val}`);
             }
           });
         });
