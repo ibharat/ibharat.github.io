@@ -59,7 +59,7 @@
           };
 
           $.ajax({
-            url: "https://api.binance.com/api/v3/ticker/price?symbols=['LUNCUSDT','PEPEUSDT']",
+            url: "https://data.binance.com/api/v3/ticker/price?symbols=%5B%22LUNCUSDT%22,%22PEPEUSDT%22%5D",
             success: function(data) {
               lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
               pepe = data.find(x => x.symbol === "PEPEUSDT").price * holdings.pepe;
