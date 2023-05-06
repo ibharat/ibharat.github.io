@@ -54,18 +54,16 @@
           let pepe = 0;
           let INR = 0; 
           const holdings = {
-            shib: 0,
             lunc: 4120777.55877432,
             pepe: 9524885.58
           };
 
           $.ajax({
-            url: "https://api.binance.com/api/v3/ticker/price?symbols=%5B%22LUNCUSDT%22,%22SHIBUSDT%22%5D",
+            url: "https://api.binance.com/api/v3/ticker/price?symbols=["LUNCUSDT","PEPEUSDT"]",
             success: function(data) {
-              shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
               lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
               pepe = data.find(x => x.symbol === "PEPEUSDT").price * holdings.pepe;
-               const all = shib + lunc + pepe;
+               const all = lunc + pepe;
                const val = Math.floor(all);
                $('#total').html(`$${val}`);
             }
