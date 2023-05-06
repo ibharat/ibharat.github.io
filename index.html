@@ -51,10 +51,12 @@
           // $('body').height(window.screen.height);
           let shib = 0;
           let lunc = 0;
+          let pepe = 0;
           let INR = 0; 
           const holdings = {
             shib: 0,
-            lunc: 4120777.55877432
+            lunc: 4120777.55877432,
+            pepe: 9524885.58
           };
 
           $.ajax({
@@ -62,7 +64,8 @@
             success: function(data) {
               shib = data.find(x => x.symbol === "SHIBUSDT").price * holdings.shib;
               lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
-               const all = shib + lunc;
+              pepe = data.find(x => x.symbol === "PEPEUSDT").price * holdings.pepe;
+               const all = shib + lunc + pepe;
                const val = Math.floor(all);
                $('#total').html(`$${val}`);
             }
