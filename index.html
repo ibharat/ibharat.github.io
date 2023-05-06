@@ -49,21 +49,23 @@
       <script>
         $(document).ready(function() {
           // $('body').height(window.screen.height);
-          let shib = 0;
+          let brise = 0;
           let lunc = 0;
           let pepe = 0;
           let INR = 0; 
           const holdings = {
             lunc: 4120777.55877432,
-            pepe: 9524885.58
+            pepe: 9524885.58,
+            brise: 137500000
           };
 
           $.ajax({
-            url: "https://data.binance.com/api/v3/ticker/price?symbols=%5B%22LUNCUSDT%22,%22PEPEUSDT%22%5D",
-            success: function(data) {
-              lunc = data.find(x => x.symbol === "LUNCUSDT").price * holdings.lunc;
-              pepe = data.find(x => x.symbol === "PEPEUSDT").price * holdings.pepe;
-               const all = lunc + pepe;
+            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2C",
+            success: function({ data }) {
+              brise = data['BRISE'].quote.USD.price * holdings.brise;
+              lunc = data['LUNC'].quote.USD.price * holdings.lunc;
+              pepe = data['PEPE'].quote.USD.price * holdings.lunc;
+               const all = lunc + pepe + brise;
                const val = Math.floor(all);
                $('#total').html(`$${val}`);
             }
