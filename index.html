@@ -65,7 +65,7 @@
 // data.body.data["BRISE"][0].quote.USD.price
               brise = data.body.data["BRISE"][0].quote.USD.price * holdings.brise;
               lunc = data.body.data["LUNC"][0].quote.USD.price * holdings.lunc;
-              pepe = data.body.data["PEPE"][0].quote.USD.price * holdings.lunc;
+              pepe = data.body.data["PEPE"][0].quote.USD.price * holdings.pepe;
                const all = lunc + pepe + brise;
                const val = Math.floor(all);
                $('#total').html(`$${val}`);
