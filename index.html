@@ -57,18 +57,20 @@
             lunc: 4237583.17510,
             pepe: 20691105,
             brise: 136982123,
-            shib: 6305170.23
+            shib: 6305170.23,
+            doge: 304,
           };
 
           $.ajax({
-            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2CSHIB",
+            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2CSHIB%2CDOGE",
             success: function({ data }) {
 // data.body.data["BRISE"][0].quote.USD.price
               brise = data.body.data["BRISE"][0].quote.USD.price * holdings.brise;
               lunc = data.body.data["LUNC"][0].quote.USD.price * holdings.lunc;
               pepe = data.body.data["PEPE"][0].quote.USD.price * holdings.pepe;
               shib = data.body.data["SHIB"][0].quote.USD.price * holdings.shib;
-               const all = lunc + pepe + brise + shib;
+              doge = data.body.data["DOGE"][0].quote.USD.price * holdings.doge;
+               const all = lunc + pepe + brise + shib + doge;
                const val = Math.floor(all);
                $('#total').html(`$${val}`);
             }
