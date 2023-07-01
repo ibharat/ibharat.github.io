@@ -62,7 +62,7 @@
           const holdings = {
             lunc: 4917837.301,
             pepe: 73914867,
-            brise: 211558394,
+            brise: 268788279,
             shib: 14097300,
             doge: 1728,
           };
@@ -77,7 +77,7 @@
               shib = data.body.data["SHIB"][0].quote.USD.price * holdings.shib;
               doge = data.body.data["DOGE"][0].quote.USD.price * holdings.doge;
                const gained = Math.floor(lunc + pepe + brise + shib + doge);
-               const percent = Math.round((gained / 1048) * 100)
+               const percent = Math.round((gained / 1063) * 100)
                $('#total').html(`${percent - 100}%`);
             }
           });
