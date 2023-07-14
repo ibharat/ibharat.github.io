@@ -60,10 +60,10 @@
           let INR = 0;
           let doge = 0;
           const holdings = {
-            lunc: 5102423.38,
-            pepe: 73914867,
+            lunc: 5102430.38,
+            pepe: 73916310,
             brise: 389973764,
-            shib: 14097300,
+            shib: 14097791,
             doge: 1728,
           };
 
@@ -73,11 +73,11 @@
 // data.body.data["BRISE"][0].quote.USD.price
               brise = data.body.data["BRISE"][0].quote.USD.price * holdings.brise;
               lunc = data.body.data["LUNC"][0].quote.USD.price * holdings.lunc;
-              pepe = data.body.data["PEPE"][0].quote.USD.price * holdings.pepe;
+              pepe = data.body.data["PEPE"][0].find(x => x.slug === 'pepe').quote.USD.price * holdings.pepe;
               shib = data.body.data["SHIB"][0].quote.USD.price * holdings.shib;
-              doge = data.body.data["DOGE"][0].quote.USD.price * holdings.doge;
+              doge = data.body.data["DOGE"][0].find(x => x.slug === 'dogecoin').quote.USD.price * holdings.doge;
                const gained = Math.floor(lunc + pepe + brise + shib + doge);
-               const percent = Math.round((gained / 1093) * 100)
+               const percent = Math.round((gained / 1131) * 100)
                $('#total').html(`${percent - 100}%`);
             }
           });
