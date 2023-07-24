@@ -70,7 +70,7 @@
           };
 
           $.ajax({
-            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2CSHIB%2CDOGE",
+            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2CSHIB%2CDOGE%2CUSTC",
             success: function({ data }) {
 // data.body.data["BRISE"][0].quote.USD.price
               brise = data.body.data["BRISE"][0].quote.USD.price * holdings.brise;
