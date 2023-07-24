@@ -59,12 +59,14 @@
           let pepe = 0;
           let INR = 0;
           let doge = 0;
+          let ustc = 0;
           const holdings = {
-            lunc: 5102430.38,
+            lunc: 5230274.48,
             pepe: 73916310,
             brise: 389973764,
             shib: 14097791,
             doge: 1728,
+            ustc: 652.347
           };
 
           $.ajax({
@@ -76,8 +78,9 @@
               pepe = data.body.data["PEPE"].find(x => x.slug === 'pepe').quote.USD.price * holdings.pepe;
               shib = data.body.data["SHIB"][0].quote.USD.price * holdings.shib;
               doge = data.body.data["DOGE"].find(x => x.slug === 'dogecoin').quote.USD.price * holdings.doge;
-               const gained = Math.floor(lunc + pepe + brise + shib + doge);
-               const percent = Math.round((gained / 1131) * 100);
+              ustc = data.body.data["USTC"].find(x => x.slug === 'terrausd').quote.USD.price * holdings.ustc;
+               const gained = Math.floor(lunc + pepe + brise + shib + doge + ustc);
+               const percent = Math.round((gained / 1152) * 100);
                $('#total').html(`${percent - 100}%`);
             }
           });
