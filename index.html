@@ -54,33 +54,22 @@
       <script>
         $(document).ready(function() {
           // $('body').height(window.screen.height);
-          let brise = 0;
-          let lunc = 0;
+          let wsm = 0;
           let pepe = 0;
           let INR = 0;
-          let doge = 0;
-          let ustc = 0;
           const holdings = {
-            lunc: 5230274.48,
-            pepe: 73916310,
-            brise: 389973764,
-            shib: 14097791,
-            doge: 1728,
-            ustc: 652.347
+            pepe: 833105776,
+            wsm: 4737.58,
           };
 
           $.ajax({
-            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=BRISE%2CPEPE%2CLUNC%2CPEPE%2CSHIB%2CDOGE%2CUSTC",
+            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=PEPE%2CWSM",
             success: function({ data }) {
 // data.body.data["BRISE"][0].quote.USD.price
-              brise = data.body.data["BRISE"][0].quote.USD.price * holdings.brise;
-              lunc = data.body.data["LUNC"][0].quote.USD.price * holdings.lunc;
               pepe = data.body.data["PEPE"].find(x => x.slug === 'pepe').quote.USD.price * holdings.pepe;
-              shib = data.body.data["SHIB"][0].quote.USD.price * holdings.shib;
-              doge = data.body.data["DOGE"].find(x => x.slug === 'dogecoin').quote.USD.price * holdings.doge;
-              ustc = data.body.data["USTC"].find(x => x.slug === 'terrausd').quote.USD.price * holdings.ustc;
-               const gained = Math.floor(lunc + pepe + brise + shib + doge + ustc);
-               const percent = Math.round((gained / 1152) * 100);
+              wsm = data.body.data["WSM"][0].quote.USD.price * holdings.wsm;
+               const gained = Math.floor(pepe + wsm);
+               const percent = Math.round((gained / 1600) * 100);
                $('#total').html(`${percent - 100}%`);
             }
           });
