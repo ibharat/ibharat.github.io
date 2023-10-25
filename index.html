@@ -58,17 +58,16 @@
           let pepe = 0;
           let INR = 0;
           const holdings = {
-            pepe: 833105776,
-            wsm: 4737.58,
+            wsm: 25652.86,
           };
 
           $.ajax({
             url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=PEPE%2CWSM",
             success: function({ data }) {
 // data.body.data["BRISE"][0].quote.USD.price
-              pepe = data.body.data["PEPE"].find(x => x.slug === 'pepe').quote.USD.price * holdings.pepe;
+
               wsm = data.body.data["WSM"][0].quote.USD.price * holdings.wsm;
-               const gained = Math.floor(pepe + wsm);
+               const gained = Math.floor(wsm);
                const percent = Math.round((gained / 1600) * 100);
                $('#total').html(`${percent - 100}%`);
             }
