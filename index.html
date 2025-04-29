@@ -86,19 +86,6 @@
               })
               .then((result) => console.log(result))
               .catch((error) => console.error(error));
-          
-
-          $.ajax({
-            url: "https://www.binance.com/bapi/composite/v1/public/promo/cmc/cryptocurrency/quotes/latest?symbol=PEPE%2CWSM",
-            success: function({ data }) {
-// data.body.data["BRISE"][0].quote.USD.price
-
-              wsm = data.body.data["WSM"][0].quote.USD.price * holdings.wsm;
-               const gained = Math.floor(wsm);
-               const percent = Math.round((gained / 1750) * 100);
-               $('#total').html(`${percent - 100}%`);
-            }
-          });
         });
       </script>
    </head>
